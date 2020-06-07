@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Enum\StatusEnum;
-use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 

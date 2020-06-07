@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\ProductService;
+use Exception;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -28,18 +29,17 @@ class ProductController extends BaseController
     /**
      * @Route("/product/generate")
      * @return \Symfony\Component\HttpFoundation\JsonResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function generate()
     {
-        //$entityManager->getRepository(Product::class)->
         try {
             $this->service->generate();
             $code = 200;
             $result = 'OK';
 
-        } catch (\Exception $e) {
-            $code = 500;
+        } catch (Exception $e) {
+            $code = $e->getCode();
             $result = $e->getMessage();
         }
 
